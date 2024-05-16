@@ -14,6 +14,13 @@ const getAllEvents = async (req, res) => {
   res.json(result);
 };
 
+const createParticipant = async (req, res) => {
+  const event_id = req.params.id;
+  const result = await eventsService.addParticipant({ ...req.body, event_id });
+  res.status(201).json(result);
+};
+
 export default {
   getAllEvents: ctrlWrapper(getAllEvents),
+  createParticipant: ctrlWrapper(createParticipant),
 };

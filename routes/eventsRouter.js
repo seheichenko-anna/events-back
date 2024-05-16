@@ -15,11 +15,11 @@ eventsRouter.get("/", eventsControllers.getAllEvents);
 //   eventsControllers.getParticipants
 // );
 
-// eventsRouter.post(
-//   "/events/:id/register",
-//   isEmptyBody,
-//   validateBody(regSchema),
-//   eventsControllers.createParticipant
-// );
+eventsRouter.post(
+  "/:id/registration",
+  isEmptyBody,
+  validateBody(regSchema),
+  eventsControllers.createParticipant
+);
 
 export default eventsRouter;

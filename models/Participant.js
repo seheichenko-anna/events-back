@@ -3,7 +3,7 @@ import { handleSaveError, setUpdateSetting } from "./hooks.js";
 
 const participantSchema = new Schema(
   {
-    fullName: {
+    full_name: {
       type: String,
       required: [true, "Full name is required"],
     },
@@ -12,16 +12,16 @@ const participantSchema = new Schema(
       required: [true, "Email is required"],
       unique: true,
     },
-    dateOfBirth: {
+    date_of_birth: {
       type: String,
       required: [true, "Date of birth is required"],
     },
-    eventSource: {
+    event_source: {
       type: String,
       enum: ["social media", "friends", "found myself"],
       default: null,
     },
-    eventId: {
+    event_id: {
       type: Schema.Types.ObjectId,
       ref: "event",
     },

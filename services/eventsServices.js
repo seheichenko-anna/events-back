@@ -1,4 +1,5 @@
 import Event from "../models/Event.js";
+import Participant from "../models/Participant.js";
 
 export const listEvents = ({ filter = {}, fields, setting = {} }) =>
   Event.find(filter, fields, setting);
@@ -7,7 +8,7 @@ export const listEvents = ({ filter = {}, fields, setting = {} }) =>
 
 // export const removeContact = async (filter) => Contact.findOneAndDelete(filter);
 
-// export const addContact = (data) => Contact.create(data);
+export const addParticipant = (data) => Participant.create(data);
 
 // export const updateContact = (filter, data) =>
 //   Contact.findOneAndUpdate(filter, data);
