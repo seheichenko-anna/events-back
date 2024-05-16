@@ -10,7 +10,21 @@ const { DB_HOST, PORT = 3000 } = process.env;
 const app = express();
 
 app.use(morgan("tiny"));
-app.use(cors());
+const allowedOrigins = [
+  "http://localhost:5173",
+  "https://seheichenko-anna.github.io/events/",
+];
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (allowedOrigins.includes(origin) || !origin) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+  })
+);
 app.use(express.json());
 
 app.use("/api/events", eventsRouter);
