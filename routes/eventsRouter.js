@@ -9,16 +9,17 @@ const eventsRouter = express.Router();
 
 eventsRouter.get("/", eventsControllers.getAllEvents);
 
-// eventsRouter.get(
-//   "events/:id/participants",
-//   isValidId,
-//   eventsControllers.getParticipants
-// );
+eventsRouter.get(
+  "/:id/participants",
+  isValidId,
+  eventsControllers.getParticipants
+);
 
 eventsRouter.post(
   "/:id/registration",
   isEmptyBody,
   validateBody(regSchema),
+  isValidId,
   eventsControllers.createParticipant
 );
 
