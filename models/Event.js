@@ -10,7 +10,7 @@ const eventSchema = new Schema(
       type: String,
     },
     event_date: {
-      type: String,
+      type: Date,
     },
     organizer: {
       type: String,
