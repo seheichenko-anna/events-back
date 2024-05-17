@@ -14,6 +14,10 @@ const getAllEvents = async (req, res) => {
   const skip = (page - 1) * limit;
   const setting = { skip, limit, sort: { [sortBy]: order === "asc" ? 1 : -1 } };
 
+  const result = await eventsService.listEvents({
+    setting,
+  });
+
   const formattedResult = result.map((event) => ({
     ...event.toObject(),
     event_date: moment(event.event_date).format("ddd MMM DD YYYY"),
