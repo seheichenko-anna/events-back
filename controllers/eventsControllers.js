@@ -43,7 +43,7 @@ const getParticipants = async (req, res) => {
   const setting = { skip, limit };
 
   const result = await eventsService.listParticipants({
-    event_id,
+    filter: { event_id },
     setting,
   });
   res.json(result);
