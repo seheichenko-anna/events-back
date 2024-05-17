@@ -9,6 +9,8 @@ const eventsRouter = express.Router();
 
 eventsRouter.get("/", eventsControllers.getAllEvents);
 
+eventsRouter.get("/:id", isValidId, eventsControllers.getOneEvent);
+
 eventsRouter.get(
   "/:id/participants",
   isValidId,
