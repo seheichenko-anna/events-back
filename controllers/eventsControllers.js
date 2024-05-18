@@ -36,14 +36,22 @@ const getOneEvent = async (req, res) => {
 };
 
 const getParticipants = async (req, res) => {
-  const { page = 1, limit = 10 } = req.query;
+  const { page = 1, limit = 10, search } = req.query;
   const event_id = req.params.id;
 
   const skip = (page - 1) * limit;
   const setting = { skip, limit };
 
+  let filter = { event_id };
+  if (search) {
+    filter.$or = [
+      { email: { $regex: search, $options: "i" } },
+      { full_name: { $regex: search, $options: "i" } },
+    ];
+  }
+
   const result = await eventsService.listParticipants({
-    filter: { event_id },
+    filter,
     setting,
   });
   res.json(result);

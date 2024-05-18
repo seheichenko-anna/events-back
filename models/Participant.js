@@ -19,7 +19,7 @@ const participantSchema = new Schema(
     event_source: {
       type: String,
       enum: ["social media", "friends", "found myself"],
-      default: null,
+      required: [true, "Event source is required"],
     },
     event_id: {
       type: Schema.Types.ObjectId,
