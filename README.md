@@ -3,7 +3,7 @@
 Frontend repository - https://github.com/seheichenko-anna/events.
 The web server is hosted on render.com
 
-# Instalation
+# Installation
 
 To run this project just follow these steps:
 
