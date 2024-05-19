@@ -6,6 +6,8 @@ export const listEvents = ({ filter = {}, fields, setting = {} }) =>
 
 export const getEvent = (filter) => Event.findOne(filter);
 
+export const getParticipant = (filter) => Participant.findOne(filter);
+
 export const listParticipants = ({ filter = {}, fields, setting = {} }) =>
   Participant.find(filter, fields, setting).populate("event_id");
 

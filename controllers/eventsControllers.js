@@ -59,6 +59,20 @@ const getParticipants = async (req, res) => {
 
 const createParticipant = async (req, res) => {
   const event_id = req.params.id;
+
+  const { email } = req.body;
+
+  const existingParticipant = await eventsService.getParticipant({
+    email,
+    event_id,
+  });
+  if (existingParticipant) {
+    throw HttpError(
+      409,
+      "Participant with this email is already registered for the event"
+    );
+  }
+
   const result = await eventsService.addParticipant({ ...req.body, event_id });
   res.status(201).json(result);
 };
